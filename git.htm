@@ -21,32 +21,62 @@
 		h2 span {
 			opacity: 0.5;
 		}
+		
+		code mark.comment, .annotate {
+			opacity: 0.5;
+			background-color: transparent;
+		}
+		
+		code.variable, mark.variable {
+			background-color: #D2FFCB !important;
+		}
+		
+		blockquote.elevator p {
+			font-size: 1.8em;
+			margin-bottom: 20px;
+			color: #666;
+		}
+		
+		#Firstpage h2 {
+			font-size: 2.3em;
+			margin-top: 120px;
+		}
 	</style>
 </head>
 <body class="list">
 	<header class="caption">
-		<h1>Using Git...</h1>
-		<p>...every day!</p>
+		<h1>Git+Symphony</h1>
+		<p>Nils Werner, Obsessive Media</p>
 	</header>
-	<div class="slide bg cover" id="Overview1"><div>
+	<div class="slide bg cover" id="Firstpage"><div>
 		<section>
 			<header>
-				<h2>Overview</h2>
+				<h2><span>Git+</span>Symphony</h2>
 			</header>
 			<img src="pictures/6163844410_666f9799da_o.jpg" alt="" />
 		</section>
 	</div></div>
+	
+	<div class="slide bg cover" id="Overview1"><div>
+		<section>
+			<header>
+				<h2><span>Git+</span>Overview</h2>
+			</header>
+			<img src="pictures/6065874789_61efca8fdd_o.jpg" alt="" />
+		</section>
+	</div></div>
+	
 	<div class="slide" id="Overview2"><div>
 		<section>
 			<header>
-				<h2>Git</h2>
+				<h2>Overview</h2>
 			</header>
 			<ul>
-				<li>+Introduction</li>
-				<li>+Beginners</li>
-				<li>+Symphony</li>
-				<li>+Deployments</li>
-				<li>+You</li>
+				<li>Introduction</li>
+				<li>Beginners</li>
+				<li>Symphony</li>
+				<li>Deployments</li>
+				<li>You</li>
 			</ul>
 		</section>
 	</div></div>
@@ -65,7 +95,7 @@
 			<header>
 				<h2>Elevator Pitch</h2>
 			</header>
-			<blockquote>
+			<blockquote class="elevator">
 				<p>
 					<em>Git</em> is a popular decentralized version control system.
 				</p>
@@ -79,7 +109,7 @@
 	<div class="slide" id="Intro3"><div>
 		<section>
 			<header>
-				<h2>Git makes it easy to...</h2>
+				<h2><span>Git=</span>Easy To...</h2>
 			</header>
 			<ul>
 				<li>collaborate</li>
@@ -108,9 +138,14 @@
 			<header>
 				<h2><span>Distributed=</span>Serverless</h2>
 			</header>
-			<p>You can create a repository as simple as</p>
+			<ul>
+				<li>Create a local repository</li>
+				<li>Start working immediately</li>
+			</ul>
 			<pre>
-				<code>&gt; git init</code>
+				<code>&gt; git <mark>init</mark></code>
+				<code><mark class="comment">  # create some files...</comment></code>
+				<code>&gt; git <mark>commit</mark> -am "First commit"</code>
 			</pre>
 		</section>
 	</div></div>
@@ -118,14 +153,78 @@
 	<div class="slide" id="Beginners3"><div>
 		<section>
 			<header>
-				<h2><span>Distributed=</span>Lots of servers</h2>
+				<h2><span>Distributed=</span>Many Servers</h2>
 			</header>
+			<ul>
+				<li>Add more than one repository</li>
+				<li>Pull from one, push to another</li>
+			</ul>
 			<pre>
-				<code>&gt; git remote add &lt;name&gt; &lt;url&gt;</code>
+				<code>&gt; git <mark>clone</mark> <mark class="variable">git@github.com:/nils/test</mark> <mark class="variable">.</mark></code>
+				<code>&gt; git <mark>remote</mark> add <mark class="variable">workstation</mark> <mark class="variable">nils@desktop:/home/test</mark></code>
 			</pre>
 		</section>
 	</div></div>
 	
+	<div class="slide" id="Beginners4"><div>
+		<section>
+			<header>
+				<h2><span>Branching=</span>Parallel Workflow</h2>
+			</header>
+			<ul>
+				<li>Branch off at any time</li>
+				<li>Work locally, topic-bound</li>
+				<li>Switch to other branches (other topics) at any time</li>
+			</ul>
+			<pre>
+				<code>&gt; git <mark>checkout</mark> -b <mark class="variable">newloginform</mark></code>
+				<code><mark class="comment">  # implement a "new login form"...</comment></code>
+				<code>&gt; git <mark>checkout</mark> <mark class="variable">integration</mark></code>
+				<code><mark class="comment">  # fix some bugs...</comment></code>
+				<code>&gt; git <mark>checkout</mark> <mark class="variable">newloginform</mark></code>
+			</pre>
+		</section>
+	</div></div>
+	
+	<div class="slide" id="Beginners5"><div>
+		<section>
+			<header>
+				<h2><span>Merging=</span>Unifying Branches</h2>
+			</header>
+			<ul>
+				<li>Bring together two separate branches</li>
+				<li>Apply changes from both branches</li>
+			</ul>
+			<pre>
+				<code>&gt; git <mark>checkout</mark> -b <mark class="variable">newloginform</mark></code>
+				<code><mark class="comment">  # implement a "new login form"...</comment></code>
+				<code>&gt; git <mark>checkout</mark> <mark class="variable">integration</mark></code>
+				<code>&gt; git <mark>merge</mark> <mark class="variable">newloginform</mark></code>
+				<code><mark class="comment">  # integration now contains all changes from newloginform</comment></code>
+			</pre>
+		</section>
+	</div></div>
+	
+	<div class="slide" id="Beginners6"><div>
+		<section>
+			<header>
+				<h2><span>Pushing/Pulling=</span>Sharing Branches</h2>
+			</header>
+			<ul>
+				<li>You can push any branch at any time</li>
+				<li>Similarily, you can pull any branch</li>
+			</ul>
+			<pre>
+				<code>&gt; git <mark>push</mark> <mark class="variable">origin</mark> <mark class="variable">master</mark></code>
+				<code><mark class="comment">  # remote "origin" now has a copy of your master</comment></code>
+			</pre>
+			<pre>
+				<code>&gt; git <mark>pull</mark> <mark class="variable">upstream</mark> <mark class="variable">integration</mark></code>
+				<code>&gt; git <mark>push</mark> <mark class="variable">origin</mark> <mark class="variable">integration</mark></code>
+				<code><mark class="comment">  # integration of "origin" is now up-to-date</comment></code>
+			</pre>
+		</section>
+	</div></div>
 	
 	
 	<div class="slide bg cover" id="Symphony1"><div>
@@ -137,7 +236,32 @@
 		</section>
 	</div></div>
 	
+	<div class="slide" id="Symphony2"><div>
+		<section>
+			<header>
+				<h2><span>GitHub=</span>Official Repository</h2>
+			</header>
+			<ul>
+				<li>All of Symphony's code is hosted on GitHub</li>
+				<li>Each contributor has his/her own fork</li>
+				<li>Changes in forks become official via pull requests</li>
+			</ul>
+			<p class="annotate">Personal forks kept up-to-date manually by<br />pulling from official repo, then pushing to fork.</p>
+		</section>
+	</div></div>
 	
+	<div class="slide" id="Symphony2"><div>
+		<section>
+			<header>
+				<h2><span>Branching Model</span></h2>
+			</header>
+			<ul>
+				<li><code class="variable">master</code> is always the latest stable version</li>
+				<li><code class="variable">integration</code> is the newest unstable code</li>
+				<li>Topic branches are created when needed, most of them in forks</li>
+			</ul>
+		</section>
+	</div></div>
 	
 	
 	
@@ -151,7 +275,49 @@
 		</section>
 	</div></div>
 	
+	<div class="slide" id="Deployments2"><div>
+		<section>
+			<header>
+				<h2><span>Deployments=</span>Push To Server</h2>
+			</header>
+			<ul>
+				<li>Install Git on server</li>
+				<li>Leverage Git hooks</li>
+				<li>Use tools like Capistrano</li>
+				<li>Rent services like Beanstalk, DeployHQ</li>
+			</ul>
+		</section>
+	</div></div>
 	
+	<div class="slide" id="Deployments3"><div>
+		<section>
+			<header>
+				<h2><span>Symphony=</span>Files+Database</h2>
+			</header>
+			<ul>
+				<li>Git does all the files</li>
+				<li>Saving/Restoring database in/from files is easy</li>
+				<li>Merging states from different servers is <strong>hard</strong></li>
+			</ul>
+		</section>
+	</div></div>
+	
+	<div class="slide" id="Deployments4"><div>
+		<section>
+			<header>
+				<h2><span>Databases=</span>Several solutions</h2>
+			</header>
+			<ul>
+				<li>Nick's <em>Database Synchronizer</em> Extension</li>
+				<li>My <em>Dump DB</em> Extension</li>
+				<li>Merging states from different servers is <strong>hard</strong></li>
+			</ul>
+			<p class="annotate">
+				Symphony 3 will mitigate that problem by saving the Section<br />
+				<em>structure</em> in XML files and offering a way to import/apply them
+			</p>
+		</section>
+	</div></div>
 	
 	
 	
