@@ -37,7 +37,7 @@
 			color: #666;
 		}
 		
-		#Firstpage h2 {
+		#Firstpage h2, #Thanks h2 {
 			font-size: 2.3em;
 			margin-top: 120px;
 		}
@@ -226,6 +226,21 @@
 		</section>
 	</div></div>
 	
+	<div class="slide" id="Beginners7"><div>
+		<section>
+			<header>
+				<h2><span>Hints=</span>Everyday Use Taught Me</h2>
+			</header>
+			<ul>
+				<li><strong>Use it</strong>, even if you only know how to <code>init</code>, <code>add</code> and <code>commit</code></li>
+				<li>Learn one command at a time as you progress.</li>
+				<li>Use it for everything.</li>
+				<li>Don't use dumb commit messages</li>
+				<li>Commit early, commit often</li>
+			</ul>
+		</section>
+	</div></div>
+	
 	
 	<div class="slide bg cover" id="Symphony1"><div>
 		<section>
@@ -250,19 +265,31 @@
 		</section>
 	</div></div>
 	
-	<div class="slide" id="Symphony2"><div>
+	<div class="slide" id="Symphony3"><div>
 		<section>
 			<header>
 				<h2><span>Branching Model</span></h2>
 			</header>
 			<ul>
 				<li><code class="variable">master</code> is always the latest stable version</li>
-				<li><code class="variable">integration</code> is the newest unstable code</li>
+				<li><code class="variable">integration</code> is the actively developed, unstable code</li>
 				<li>Topic branches are created when needed, most of them in forks</li>
 			</ul>
 		</section>
 	</div></div>
 	
+	<div class="slide" id="Symphony4"><div>
+		<section>
+			<header>
+				<h2><span>.gitignore=</span>Track Only Certain Files</h2>
+			</header>
+			<ul>
+				<li><code>.htaccess</code>, <code>manifest/</code>: installation-specific files
+				<li><code>workspace/uploads/</code>: Potentially huge files</li>
+				<li><code>thumbs.db</code>, <code>.DS_Store</code>: Operating System crap</li>
+			</ul>
+		</section>
+	</div></div>
 	
 	
 	
@@ -295,27 +322,56 @@
 				<h2><span>Symphony=</span>Files+Database</h2>
 			</header>
 			<ul>
-				<li>Git does all the files</li>
+				<li>Git only does files</li>
 				<li>Saving/Restoring database in/from files is easy</li>
-				<li>Merging states from different servers is <strong>hard</strong></li>
-			</ul>
-		</section>
-	</div></div>
-	
-	<div class="slide" id="Deployments4"><div>
-		<section>
-			<header>
-				<h2><span>Databases=</span>Several solutions</h2>
-			</header>
-			<ul>
-				<li>Nick's <em>Database Synchronizer</em> Extension</li>
-				<li>My <em>Dump DB</em> Extension</li>
 				<li>Merging states from different servers is <strong>hard</strong></li>
 			</ul>
 			<p class="annotate">
 				Symphony 3 will mitigate that problem by saving the Section<br />
 				<em>structure</em> in XML files and offering a way to import/apply them
 			</p>
+		</section>
+	</div></div>
+	
+	<div class="slide" id="Deployments4"><div>
+		<section>
+			<header>
+				<h2><span>Shared=</span>Sharing Database Among Developers</h2>
+			</header>
+			<ul>
+				<li>All installations use the same MySQL server</li>
+				<li>Works only when connected/on site.</li>
+				<li>Regular backups mandatory</li>
+				<li>Not feasable for dev/stage/production environments</li>
+			</ul>
+		</section>
+	</div></div>
+	
+	<div class="slide" id="Deployments5"><div>
+		<section>
+			<header>
+				<h2><span>Database Synchronizer=</span>Log Structure Changes</h2>
+			</header>
+			<ul>
+				<li>Logs MySQL-queries that are changing the Section structure</li>
+				<li>Exports them so they can be re-applied on other servers</li>
+				<li>Requires modifications to the core</li>
+				<li>Kind of scary when you take a look at Symphony's MySQL structure</li>
+			</ul>
+		</section>
+	</div></div>
+	
+	<div class="slide" id="Deployments6"><div>
+		<section>
+			<header>
+				<h2><span>Dump DB=</span>Save/Restore entire Database</h2>
+			</header>
+			<ul>
+				<li>One-Click-Saving/Restoring of DB in/from file</li>
+				<li>Dump can be tracked by Git</li>
+				<li>Always overwrites states on other servers</li>
+				<li>Switch servers readonly during development/deployment</li>
+			</ul>
 		</section>
 	</div></div>
 	
@@ -328,6 +384,15 @@
 				<h2><span>Git+</span>You</h2>
 			</header>
 			<img src="pictures/6163373010_c6349a0327_o.jpg" alt="" />
+		</section>
+	</div></div>
+	
+	<div class="slide bg cover" id="Thanks"><div>
+		<section>
+			<header>
+				<h2><span>Git+</span>Symphony</h2>
+			</header>
+			<img src="pictures/3415452216_130fd70273_o.jpg" alt="" />
 		</section>
 	</div></div>
 	<!--
