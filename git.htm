@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en-US">
 <head>
-	<title>Using Git every day</title>
+	<title>Git+Symphony</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=1274, user-scalable=no">
 	<link rel="stylesheet" href="themes/ribbon/styles/style.css">
@@ -18,7 +18,7 @@
 			color: #000;
 		}
 		
-		h2 span {
+		h2 span, span.pale {
 			opacity: 0.5;
 		}
 		
@@ -33,8 +33,9 @@
 		
 		blockquote.elevator p {
 			font-size: 1.8em;
-			margin-bottom: 20px;
+			margin-bottom: 40px;
 			color: #666;
+			line-height: 45px;
 		}
 		
 		#Firstpage h2, #Thanks h2 {
@@ -72,11 +73,11 @@
 				<h2>Overview</h2>
 			</header>
 			<ul>
-				<li>Introduction</li>
-				<li>Beginners</li>
-				<li>Symphony</li>
-				<li>Deployments</li>
-				<li>You</li>
+				<li>Introduction<span class="pale">=Git in a Nutshell</span></li>
+				<li>Beginners<span class="pale">=What it takes to get started</span></li>
+				<li>Symphony<span class="pale">=Core-development and Symphony-specifics</span></li>
+				<li>Deployments<span class="pale">=Symphony-specific problems</span></li>
+				<li>You<span class="pale">=Discussion</span></li>
 			</ul>
 		</section>
 	</div></div>
@@ -93,7 +94,7 @@
 	<div class="slide" id="Intro2"><div>
 		<section>
 			<header>
-				<h2>Elevator Pitch</h2>
+				<h2><span>Pitch=</span>It Boils Down To...</h2>
 			</header>
 			<blockquote class="elevator">
 				<p>
@@ -156,12 +157,14 @@
 				<h2><span>Distributed=</span>Many Servers</h2>
 			</header>
 			<ul>
-				<li>Add more than one repository</li>
+				<li>Add more than one remote repository</li>
 				<li>Pull from one, push to another</li>
 			</ul>
 			<pre>
 				<code>&gt; git <mark>clone</mark> <mark class="variable">git@github.com:/nils/test</mark> <mark class="variable">.</mark></code>
+				<code><mark class="comment">  # you now have an exact copy of that remote</comment></code>
 				<code>&gt; git <mark>remote</mark> add <mark class="variable">workstation</mark> <mark class="variable">nils@desktop:/home/test</mark></code>
+				<code><mark class="comment">  # a second remote to push and pull from/to</comment></code>
 			</pre>
 		</section>
 	</div></div>
@@ -179,7 +182,7 @@
 			<pre>
 				<code>&gt; git <mark>checkout</mark> -b <mark class="variable">newloginform</mark></code>
 				<code><mark class="comment">  # implement a "new login form"...</comment></code>
-				<code>&gt; git <mark>checkout</mark> <mark class="variable">integration</mark></code>
+				<code>&gt; git <mark>checkout</mark> <mark class="variable">master</mark></code>
 				<code><mark class="comment">  # fix some bugs...</comment></code>
 				<code>&gt; git <mark>checkout</mark> <mark class="variable">newloginform</mark></code>
 			</pre>
@@ -198,9 +201,9 @@
 			<pre>
 				<code>&gt; git <mark>checkout</mark> -b <mark class="variable">newloginform</mark></code>
 				<code><mark class="comment">  # implement a "new login form"...</comment></code>
-				<code>&gt; git <mark>checkout</mark> <mark class="variable">integration</mark></code>
+				<code>&gt; git <mark>checkout</mark> <mark class="variable">master</mark></code>
 				<code>&gt; git <mark>merge</mark> <mark class="variable">newloginform</mark></code>
-				<code><mark class="comment">  # integration now contains all changes from newloginform</comment></code>
+				<code><mark class="comment">  # master now contains all changes from newloginform</comment></code>
 			</pre>
 		</section>
 	</div></div>
@@ -233,10 +236,10 @@
 			</header>
 			<ul>
 				<li><strong>Use it</strong>, even if you only know how to <code>init</code>, <code>add</code> and <code>commit</code></li>
-				<li>Learn one command at a time as you progress.</li>
-				<li>Use it for everything.</li>
+				<li>Learn one command at a time as you progress</li>
+				<li>Use it for everything</li>
 				<li>Don't use dumb commit messages</li>
-				<li>Commit early, commit often</li>
+				<li>Commit early, Commit often</li>
 			</ul>
 		</section>
 	</div></div>
@@ -336,7 +339,7 @@
 	<div class="slide" id="Deployments4"><div>
 		<section>
 			<header>
-				<h2><span>Shared=</span>Sharing Database Among Developers</h2>
+				<h2><span>Shared=</span>One Database For All</h2>
 			</header>
 			<ul>
 				<li>All installations use the same MySQL server</li>
@@ -350,7 +353,7 @@
 	<div class="slide" id="Deployments5"><div>
 		<section>
 			<header>
-				<h2><span>Database Synchronizer=</span>Log Structure Changes</h2>
+				<h2><span>Database Synchronizer=</span>Log Structural Changes</h2>
 			</header>
 			<ul>
 				<li>Logs MySQL-queries that are changing the Section structure</li>
@@ -364,7 +367,7 @@
 	<div class="slide" id="Deployments6"><div>
 		<section>
 			<header>
-				<h2><span>Dump DB=</span>Save/Restore entire Database</h2>
+				<h2><span>Dump DB=</span>Save Entire Database</h2>
 			</header>
 			<ul>
 				<li>One-Click-Saving/Restoring of DB in/from file</li>
