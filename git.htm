@@ -34,7 +34,8 @@
 		blockquote.elevator p {
 			font-size: 1.8em;
 			margin-bottom: 40px;
-			color: #666;
+			opacity: 0.8;
+			color: #fff;
 			line-height: 45px;
 		}
 		
@@ -70,31 +71,23 @@
 	<div class="slide" id="Overview2"><div>
 		<section>
 			<header>
-				<h2>Overview</h2>
+				<h2><span>Overview=</span>What's Ahead</h2>
 			</header>
 			<ul>
-				<li>Introduction<span class="pale">=Git in a Nutshell</span></li>
-				<li>Beginners<span class="pale">=What it takes to get started</span></li>
-				<li>Symphony<span class="pale">=Core-development and Symphony-specifics</span></li>
-				<li>Deployments<span class="pale">=Symphony-specific problems</span></li>
+				<li>Pitch<span class="pale">=Git in a Nutshell</span></li>
+				<li>Planning<span class="pale">=An outlook to what you will be doing</span></li>
+				<li>Dailies<span class="pale">=Regularily needed actions</span></li>
+				<li>Core<span class="pale">=Core-development</span></li>
+				<li>Deployments<span class="pale">=Deployment-specific problems</span></li>
 				<li>You<span class="pale">=Discussion</span></li>
 			</ul>
 		</section>
 	</div></div>
 	
-	<div class="slide bg cover" id="Intro1"><div>
+	<div class="slide bg cover" id="Pitch"><div>
 		<section>
 			<header>
-				<h2><span>Git+</span>Introduction</h2>
-			</header>
-			<img src="pictures/6051168199_f3869b2cb7_o.jpg" alt="" />
-		</section>
-	</div></div>
-	
-	<div class="slide" id="Intro2"><div>
-		<section>
-			<header>
-				<h2><span>Pitch=</span>It Boils Down To...</h2>
+				<h2><span>Git+</span>Pitch</h2>
 			</header>
 			<blockquote class="elevator">
 				<p>
@@ -104,78 +97,88 @@
 					But it is also a community and a workflow.
 				</p>
 			</blockquote>
-		</section>
-	</div></div>
-	
-	<div class="slide" id="Intro3"><div>
-		<section>
-			<header>
-				<h2><span>Git=</span>Easy To...</h2>
-			</header>
-			<ul>
-				<li>collaborate</li>
-				<li>review changes</li>
-				<li>revert errors</li>
-				<li>parallelize your workflow</li>
-			</ul>
+			<img src="pictures/6051168199_f3869b2cb7_o.jpg" alt="" />
 		</section>
 	</div></div>
 	
 	
-	
-	
-	
-	<div class="slide bg cover" id="Beginners1"><div>
+	<div class="slide bg cover" id="Planning"><div>
 		<section>
 			<header>
-				<h2><span>Git+</span>Beginners</h2>
+				<h2><span>Git+</span>Planning</h2>
 			</header>
 			<img src="pictures/5890874558_8e1aee52f7_o.jpg" alt="" />
 		</section>
 	</div></div>
 	
-	<div class="slide" id="Beginners2"><div>
+	<div class="slide" id="Remotes"><div>
 		<section>
 			<header>
-				<h2><span>Distributed=</span>Serverless</h2>
+				<h2><span>Remotes=</span>At Least Two</h2>
 			</header>
 			<ul>
-				<li>Create a local repository</li>
-				<li>Start working immediately</li>
+				<li>Keep official remote for upgrades</li>
+				<li>Add private remote for collaboration</li>
 			</ul>
 			<pre>
-				<code>&gt; git <mark>init</mark></code>
-				<code><mark class="comment">  # create some files...</comment></code>
-				<code>&gt; git <mark>commit</mark> -am "First commit"</code>
+				<code>&gt; git <mark>clone</mark> <mark class="variable">git://github.com/symphonycms/symphony-2</mark> <mark class="variable">.</mark></code>
+				<code>&gt; git <mark>remote</mark> rm <mark class="variable">origin</mark></code>
+				<code>&gt; git <mark>remote</mark> add <mark class="variable">origin</mark> <mark class="variable">git@codebasehq.com:nils/test/</mark></code>
+				<code>&gt; git <mark>remote</mark> add <mark class="variable">upstream</mark> <mark class="variable">git://github.com/symphonyc...</mark></code>
 			</pre>
 		</section>
 	</div></div>
 	
-	<div class="slide" id="Beginners3"><div>
+	<div class="slide" id="gitignore"><div>
 		<section>
 			<header>
-				<h2><span>Distributed=</span>Many Servers</h2>
+				<h2><span>.gitignore=</span>Ignore Certain Files</h2>
 			</header>
+			<p>Most cases covered by official defaults</p>
 			<ul>
-				<li>Add more than one remote repository</li>
-				<li>Pull from one, push to another</li>
+				<li>Installation-specific files: <span class="pale"><code>.htaccess</code>, <code>manifest/</code></span></li>
+				<li>Operating System crap: <span class="pale"><code>thumbs.db</code>, <code>.DS_Store</code></span></li>
+				<li>Potentially huge files: <span class="pale"><code>workspace/uploads/</code></span></li>
+				<li><strong>But:</strong> we need <span class="pale"><code>workspace/</code></span></li></li>
 			</ul>
-			<pre>
-				<code>&gt; git <mark>clone</mark> <mark class="variable">git@github.com:/nils/test</mark> <mark class="variable">.</mark></code>
-				<code><mark class="comment">  # you now have an exact copy of that remote</comment></code>
-				<code>&gt; git <mark>remote</mark> add <mark class="variable">workstation</mark> <mark class="variable">nils@desktop:/home/test</mark></code>
-				<code><mark class="comment">  # a second remote to push and pull from/to</comment></code>
-			</pre>
 		</section>
 	</div></div>
 	
-	<div class="slide" id="Beginners4"><div>
+	<div class="slide" id="gitignore"><div>
+		<section>
+			<header>
+				<h2><span>config.php=</span>Kind Of Shared</h2>
+			</header>
+			<ul>
+				<li>Developers need defaults for their setup</li>
+				<li>But also ability to customize their settings</li>
+			</ul>
+			<ul>
+				<li>Copy <code>manifest/config.php</code> to <code>config-example.php</code></li>
+				<li>Copy <code>.htaccess</code> to <code>htaccess-example</code></li>
+			</ul>
+			<p class="annotate">
+				During installation simply copy files back and create <code>manifest/</code>-subdirectories.
+			</p>
+		</section>
+	</div></div>
+	
+	<div class="slide bg cover" id="Dailies"><div>
+		<section>
+			<header>
+				<h2><span>Git+</span>Dailies</h2>
+			</header>
+			<img src="pictures/6075307727_005cc65e08_o.jpg" alt="" />
+		</section>
+	</div></div>
+	
+	<div class="slide" id="Branching"><div>
 		<section>
 			<header>
 				<h2><span>Branching=</span>Parallel Workflow</h2>
 			</header>
 			<ul>
-				<li>Branch off at any time</li>
+				<li>Branch off for complex features</li>
 				<li>Work locally, topic-bound</li>
 				<li>Switch to other branches (other topics) at any time</li>
 			</ul>
@@ -183,13 +186,13 @@
 				<code>&gt; git <mark>checkout</mark> -b <mark class="variable">newloginform</mark></code>
 				<code><mark class="comment">  # implement a "new login form"...</comment></code>
 				<code>&gt; git <mark>checkout</mark> <mark class="variable">master</mark></code>
-				<code><mark class="comment">  # fix some bugs...</comment></code>
+				<code><mark class="comment">  # fix some bugs, push/pull etc...</comment></code>
 				<code>&gt; git <mark>checkout</mark> <mark class="variable">newloginform</mark></code>
 			</pre>
 		</section>
 	</div></div>
 	
-	<div class="slide" id="Beginners5"><div>
+	<div class="slide" id="Merging"><div>
 		<section>
 			<header>
 				<h2><span>Merging=</span>Unifying Branches</h2>
@@ -203,29 +206,140 @@
 				<code><mark class="comment">  # implement a "new login form"...</comment></code>
 				<code>&gt; git <mark>checkout</mark> <mark class="variable">master</mark></code>
 				<code>&gt; git <mark>merge</mark> <mark class="variable">newloginform</mark></code>
-				<code><mark class="comment">  # master now contains all changes from newloginform</comment></code>
+				<code><mark class="comment">  # master and newloginform are now both at HEAD</comment></code>
 			</pre>
 		</section>
 	</div></div>
 	
-	<div class="slide" id="Beginners6"><div>
+	<div class="slide" id="Rebasing"><div>
 		<section>
 			<header>
-				<h2><span>Pushing/Pulling=</span>Sharing Branches</h2>
+				<h2><span>Rebasing=</span>Catching Up</h2>
 			</header>
 			<ul>
-				<li>You can push any branch at any time</li>
-				<li>Similarily, you can pull any branch</li>
+				<li>Make topic branch catch up on its parent</li>
+				<li>Does <strong>not merge</strong> the branches</li>
 			</ul>
 			<pre>
-				<code>&gt; git <mark>push</mark> <mark class="variable">origin</mark> <mark class="variable">master</mark></code>
-				<code><mark class="comment">  # remote "origin" now has a copy of your master</comment></code>
+				<code>&gt; git <mark>checkout</mark> <mark class="variable">newloginform</mark></code>
+				<code>&gt; git <mark>rebase</mark> <mark class="variable">master</mark></code>
+				<code><mark class="comment">  # newloginform now contains all changes from master</comment></code>
 			</pre>
+			<p class="annotate">
+				The catch: You cannot push rebased branches
+			</p>
+		</section>
+	</div></div>
+	
+	<div class="slide" id="Extensions"><div>
+		<section>
+			<header>
+				<h2><span>Extensions=</span>Submodules</h2>
+			</header>
+			<ul>
+				<li>Most Extensions are available through GitHub</li>
+				<li>Custom Extensions should be made available on private repos</li>
+			</ul>
 			<pre>
-				<code>&gt; git <mark>pull</mark> <mark class="variable">upstream</mark> <mark class="variable">integration</mark></code>
-				<code>&gt; git <mark>push</mark> <mark class="variable">origin</mark> <mark class="variable">integration</mark></code>
-				<code><mark class="comment">  # integration of "origin" is now up-to-date</comment></code>
+				<code>&gt; git <mark>submodule</mark> add <mark class="variable">extensions/gcse</mark> <mark class="variable">git://github.com...</mark></code>
+				<code>&gt; git <mark>submodule</mark> add <mark class="variable">extensions/customui</mark> <mark class="variable">git@codebase...</mark></code>
+				<code>&gt; git <mark>submodule</mark> update --init</code>
 			</pre>
+			<p class="annotate">
+				<strong>Always use anonymous <code>git://github.com</code> URLs from GitHub!</strong>
+			</p>
+		</section>
+	</div></div>
+	
+	<div class="slide" id="UpdatingExtensions"><div>
+		<section>
+			<header>
+				<h2><span>Updating Extensions=</span>Lots Of Pulls</h2>
+			</header>
+			<ul>
+				<li>You need to manually do a pull for each extension</li>
+			</ul>
+			<pre>
+				<code>&gt; cd extensions/gcse</code>
+				<code>&gt; git <mark>pull</mark> <mark class="variable">origin</mark> <mark class="variable">master</mark></code>
+				<code>&gt; cd ../..</code>
+				<code>&gt; git <mark>commit</mark> -am "GCSE updated"</code>
+			</pre>
+			<p class="annotate">
+				You need to notify your collegues to do a <code>git submodule update <br />--init</code> next time after pulling.
+			</p>
+		</section>
+	</div></div>
+	
+	<div class="slide" id="UndoUpdatingExtensions"><div>
+		<section>
+			<header>
+				<h2><span>Undo Updating Extensions=</span>A Simple Update</h2>
+			</header>
+			<ul>
+				<li>You noticed the new version doesn't work</li>
+			</ul>
+			<pre>
+				<code>&gt; git <mark>submodule</mark> update --init</code>
+			</pre>
+			<p class="annotate">
+				Reverts to last known extension version snapshot.
+			</p>
+		</section>
+	</div></div>
+	
+	<div class="slide" id="Upgrading"><div>
+		<section>
+			<header>
+				<h2><span>Upgrading=</span>Being Cautious</h2>
+			</header>
+			<ul>
+				<li>Basically a pull from the official repository</li>
+				<li>Merge conflicts likely</li>
+			</ul>
+			<pre>
+				<code>&gt; git <mark>checkout</mark> -b <mark class="variable">upgrade</mark></code>
+				<code>&gt; git <mark>pull</mark> <mark class="variable">upstream</mark> <mark class="variable">master</mark></code>
+				<code>&gt; git <mark>submodule</mark> update --init</code>
+				<code><mark class="comment">  # resolve merge conflicts, run update.php, run tests<br /></comment></code>
+				<code>&gt; git <mark>checkout</mark> <mark class="variable">master</mark></code>
+				<code>&gt; git <mark>merge</mark> <mark class="variable">upgrade</mark></code>
+			</pre>
+		</section>
+	</div></div>
+	
+	<div class="slide" id="UndoUpgrading"><div>
+		<section>
+			<header>
+				<h2><span>Undo Upgrading=</span>A Simple Checkout</h2>
+			</header>
+			<ul>
+				<li>New version breaks everything</li>
+			</ul>
+			<pre>
+				<code>&gt; git <mark>checkout</mark> <mark class="variable">master</mark></code>
+				<code>&gt; git <mark>submodule</mark> update --init</code>
+				<code><mark class="comment">  # previous, working version restored<br /></comment></code>
+				<code>&gt; git <mark>branch</mark> -D <mark class="variable">upgrade</mark></code>
+			</pre>
+		</section>
+	</div></div>
+	
+	<div class="slide" id="Cleanup"><div>
+		<section>
+			<header>
+				<h2><span>Cleanup=</span>Purging Remote Branches</h2>
+			</header>
+			<ul>
+				<li>Old, merged branches on shared repos clutter everything</li>
+			</ul>
+			<pre>
+				<code>&gt; git <mark>push</mark> <mark class="variable">upstream</mark> <mark class="variable">:newloginform</mark></code>
+				<code>&gt; git <mark>branch</mark> -D <mark class="variable">newloginform</mark></code>
+			</pre>
+			<p class="annotate">
+				Do not delete and recreate popular branches being used by others
+			</p>
 		</section>
 	</div></div>
 	
@@ -248,7 +362,7 @@
 	<div class="slide bg cover" id="Symphony1"><div>
 		<section>
 			<header>
-				<h2><span>Git+</span>Symphony</h2>
+				<h2><span>Git+</span>Core</h2>
 			</header>
 			<img src="pictures/3964374780_d04ef336f6_b.jpg" alt="" />
 		</section>
