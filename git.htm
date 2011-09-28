@@ -450,6 +450,58 @@
 		</section>
 	</div></div>
 	
+	<div class="slide" id="GitOnServer"><div>
+		<section>
+			<header>
+				<h2><span>Git On Server=</span>A Simple Pull</h2>
+			</header>
+			<ul>
+				<li>Straightforward</li>
+				<li>Very flexible</li>
+				<li>Requires shell access to server</li>
+			</ul>
+		</section>
+	</div></div>
+	
+	<div class="slide" id="GitHooks"><div>
+		<section>
+			<header>
+				<h2><span>Git Hooks=</span>Custom Git Config</h2>
+			</header>
+			<ul>
+				<li>Flaky custom scripts</li>
+				<li>Git uploads to FTP</li>
+				<li>Dependent on one machine, the one with the scripts</li>
+			</ul>
+		</section>
+	</div></div>
+	
+	<div class="slide" id="Capistrano"><div>
+		<section>
+			<header>
+				<h2><span>Capistrano=</span>Custom Git Config</h2>
+			</header>
+			<ul>
+				<li>Popular tool for deployments</li>
+				<li>Specializes in Ruby on Rails scripts</li>
+			</ul>
+		</section>
+	</div></div>
+	
+	<div class="slide" id="Beanstalk"><div>
+		<section>
+			<header>
+				<h2><span>Hosted Service=</span>Simple GUIs</h2>
+			</header>
+			<ul>
+				<li>Straightforward</li>
+				<li>Works with any server</li>
+				<li>Monthly costs</li>
+				<li>Your data and credentials are stored by provider</li>
+			</ul>
+		</section>
+	</div></div>
+	
 	<div class="slide" id="FilesDatabase"><div>
 		<section>
 			<header>
@@ -464,6 +516,19 @@
 				Symphony 3 will mitigate that problem by saving the Section<br />
 				<em>structure</em> in XML files and offering a way to import/apply them
 			</p>
+		</section>
+	</div></div>
+	
+	<div class="slide" id="DatabaseSolutions"><div>
+		<section>
+			<header>
+				<h2><span>Solutions=</span>Incremental or Snapshots</h2>
+			</header>
+			<ul>
+				<li>Shared</li>
+				<li>Database Synchronizer</li>
+				<li>Dump DB</li>
+			</ul>
 		</section>
 	</div></div>
 	
@@ -487,7 +552,7 @@
 				<h2><span>Database Synchronizer=</span>Log Structural Changes</h2>
 			</header>
 			<ul>
-				<li>Logs MySQL-queries that are changing the Section structure</li>
+				<li>Logs changes to Section structure</li>
 				<li>Exports them so they can be re-applied on other servers</li>
 				<li>Requires modifications to the core</li>
 				<li>Kind of scary when you take a look at Symphony's MySQL structure</li>
