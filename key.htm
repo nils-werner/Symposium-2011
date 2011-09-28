@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<title>XSLT key()</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=1274, user-scalable=no">
+	<link rel="stylesheet" href="themes/ribbon/styles/style.css">
+	<style>
+		.cover h2 {
+			color:#FFF;
+			text-align:center;
+			font-size:70px;
+		}
+		
+		h2 code {
+			background-color: transparent !important;
+		}
+		
+		.slide { overflow:hidden }
+		
+		#Firstpage h2, #Thanks h2 {
+			font-size: 2.3em;
+			margin-top: 120px;
+		}
+		
+		h3 {
+			font-size: 1.3em;
+			font-weight: bold;
+			color: #5353B6;
+		}
+	</style>
+</head>
+<body class="list">
+	<header class="caption">
+		<h1>XSLT key()</h1>
+		<p>Nils Werner, Obsessive Media</p>
+	</header>
+	<div class="slide bg cover" id="Firstpage"><div>
+		<section>
+			<header>
+				<h2>XSLT key()</h2>
+			</header>
+			<img src="pictures/6000632740_dcedf2085c_o.jpg" alt="" />
+		</section>
+	</div></div>
+	
+	<div class="slide" id="Data"><div>
+		<section>
+			<header>
+				<h2>The XML</h2>
+			</header>
+			<pre>
+				<code>&lt;data&gt;</code>
+				<code>	&lt;item region="Italy"&gt;</code>
+				<code>			&lt;name&gt;Guiseppe&lt;/name&gt;</code>
+				<code>	&lt;item&gt;</code>
+				<code>	&lt;item region="Germany"&gt;</code>
+				<code>			&lt;name&gt;Hans&lt;/name&gt;</code>
+				<code>	&lt;item&gt;</code>
+				<code> <mark class="comment">...</mark></code>
+				<code>&lt;data&gt;</code>
+			</pre>
+		</section>
+	</div></div>
+	
+	<div class="slide" id="Regular"><div>
+		<section>
+			<header>
+				<h2>Regular XPath</h2>
+			</header>
+			<pre>
+				<code>&lt;xsl:template match="/"&gt;</code>
+				<code>	&lt;xsl:for-each select="data/item[@region='Germany']"&gt;</code>
+				<code>			&lt;xsl:value-of select="name" /&gt;</code>
+				<code>	&lt;/xsl:for-each&gt;</code>
+				<code>&lt;/xsl:template&gt;</code>
+			</pre>
+		</section>
+	</div></div>
+	
+	<div class="slide" id="UsingKey"><div>
+		<section>
+			<header>
+				<h2>Using key()</h2>
+			</header>
+			<pre>
+				<code>&lt;xsl:key name="regions" match="data/item" use="@region" /&gt;</code>
+				<code> <mark class="comment">...</mark></code>
+				<code>&lt;xsl:template match="/"&gt;</code>
+				<code>	&lt;xsl:for-each select="key('regions','Germany')"&gt;</code>
+				<code>			&lt;xsl:value-of select="name" /&gt;</code>
+				<code>	&lt;/xsl:for-each&gt;</code>
+				<code>&lt;/xsl:template&gt;</code>
+			</pre>
+		</section>
+	</div></div>
+	
+	<div class="slide" id="Results"><div>
+		<section>
+			<header>
+				<h2>Results</h2>
+			</header>
+			<h3>Advantages</h3>
+			<ul>
+				<li>Allows the XSLT processor to define a search key on your data</li>
+				<li>Improves performance dramatically</li>
+			</ul>
+			<h3>Disadvantages</h3>
+			<ul>
+				<li>Only very strict, simple Xpath expressions possible</li>
+			</ul>
+		</section>
+	</div></div>
+
+	<!--
+		To hide progress bar from entire presentation
+		just remove “progress” element.
+		-->
+	<div class="progress"><div></div></div>
+	<script src="scripts/script.js"></script>
+	<!-- Copyright © 2010–2011 Vadim Makeev, http://pepelsbey.net/ -->
+</body>
+</html>
