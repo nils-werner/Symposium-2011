@@ -73,17 +73,20 @@
 				<h2><span>Overview=</span>What's Ahead</h2>
 			</header>
 			<ul>
-				<li>Pitch<span class="pale">=Git in a Nutshell</span></li>
-				<li>Planning<span class="pale">=An outlook to what you will be doing</span></li>
-				<li>Dailies<span class="pale">=Regularily needed actions</span></li>
-				<li>Core<span class="pale">=Core-development</span></li>
-				<li>Deployments<span class="pale">=Deployment-specific problems</span></li>
-				<li>You<span class="pale">=Discussion</span></li>
+				<!-- <li>Pitch<span class="pale">=Git in a Nutshell</span></li> -->
+				<li>Planning</li>
+				<li>Dailies</li>
+				<li>Core</li>
+				<li>Deployments</li>
+				<li>You</li>
 			</ul>
+			<p class="annotate">
+				This talk should be more an open discussion than a presentation.
+			</p>
 		</section>
 	</div></div>
 	
-	<div class="slide bg cover" id="Pitch"><div>
+	<!-- <div class="slide bg cover" id="Pitch"><div>
 		<section>
 			<header>
 				<h2><span>Git+</span>Pitch</h2>
@@ -98,7 +101,7 @@
 			</blockquote>
 			<img src="pictures/3964374780_d04ef336f6_b.jpg" alt="" />
 		</section>
-	</div></div>
+	</div></div> -->
 	
 	
 	<div class="slide bg cover" id="Planning"><div>
@@ -133,12 +136,20 @@
 			<header>
 				<h2><span>.gitignore=</span>Ignore Certain Files</h2>
 			</header>
-			<p>Most cases covered by official defaults</p>
 			<ul>
-				<li>Installation-specific files: <span class="pale"><code>.htaccess</code>, <code>manifest/</code></span></li>
-				<li>Operating System crap: <span class="pale"><code>thumbs.db</code>, <code>.DS_Store</code></span></li>
-				<li>Potentially huge files: <span class="pale"><code>workspace/uploads/</code></span></li>
-				<li><strong>But:</strong> we need <span class="pale"><code>workspace/</code></span></li></li>
+				<li>We don't need
+					<ul>
+						<li>Installation-specific files: <span class="pale"><code>.htaccess</code>, <code>manifest/</code></span></li>
+						<li>Operating System crap: <span class="pale"><code>thumbs.db</code>, <code>.DS_Store</code></span></li>
+						<li>Potentially huge files: <span class="pale"><code>workspace/uploads/</code></span></li>
+					</ul>
+				</li>
+				<li>We need
+					<ul>
+						<li>Templates, Components <span class="pale"><code>workspace/pages/</code>, <code>data-sources/</code></span></li></li>
+						<li>Config-examples: <span class="pale"><code>config.php</code>, <code>.htaccess</code></span></li>
+					</ul>
+				</li>
 			</ul>
 		</section>
 	</div></div>
