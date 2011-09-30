@@ -79,10 +79,10 @@
 		</section>
 	</div></div>
 	
-	<div class="slide" id="Regular"><div>
+	<div class="slide" id="RegularSelect"><div>
 		<section>
 			<header>
-				<h2>Regular XPath</h2>
+				<h2>Regular XPath to select</h2>
 			</header>
 			<pre>
 				<code>&lt;xsl:template match="/"&gt;</code>
@@ -94,10 +94,10 @@
 		</section>
 	</div></div>
 	
-	<div class="slide" id="UsingKey"><div>
+	<div class="slide" id="KeySelect"><div>
 		<section>
 			<header>
-				<h2>Using key()</h2>
+				<h2>Using key() in a select</h2>
 			</header>
 			<pre>
 				<code>&lt;xsl:key name="regions" match="data/item" use="@region" /&gt;</code>
@@ -111,19 +111,92 @@
 		</section>
 	</div></div>
 	
-	<div class="slide" id="Results"><div>
+	<div class="slide" id="WhatSelect"><div>
+		<section>
+			<header>
+				<h2>What is happening?</h2>
+			</header>
+			<ul>
+				<li>Think of MySQL</li>
+				<li>XSLT creates a search key</li>
+				<li>enables it to search the tree much faster</li>
+			</ul>
+		</section>
+	</div></div>
+	
+	<div class="slide" id="ResultsSelect"><div>
 		<section>
 			<header>
 				<h2>Results</h2>
 			</header>
 			<h3>Advantages</h3>
 			<ul>
-				<li>Allows the XSLT processor to define a search key on your data</li>
 				<li>Improves performance dramatically</li>
 			</ul>
 			<h3>Disadvantages</h3>
 			<ul>
 				<li>Only very strict, simple Xpath expressions possible</li>
+			</ul>
+		</section>
+	</div></div>
+	
+	<div class="slide" id="RegularMatch"><div>
+		<section>
+			<header>
+				<h2>Regular XPath to match</h2>
+			</header>
+			<pre>
+				<code>&lt;xsl:apply-templates select="data/item" /&gt;</code>
+				<code> <mark class="comment">...</mark></code>
+				<code>&lt;xsl:template match="data/item[@region='Germany']"&gt;</code>
+				<code>	&lt;xsl:value-of select="name" /&gt;</code>
+				<code>&lt;/xsl:template&gt;</code>
+			</pre>
+		</section>
+	</div></div>
+
+	<div class="slide" id="KeyMatch"><div>
+		<section>
+			<header>
+				<h2>Using key() in a match</h2>
+			</header>
+			<pre>
+				<code>&lt;xsl:key name="regions" match="data/item" use="@region" /&gt;</code>
+				<code> <mark class="comment">...</mark></code>
+				<code>&lt;xsl:apply-templates select="data/item" /&gt;</code>
+				<code> <mark class="comment">...</mark></code>
+				<code>&lt;xsl:template match="key('regions','Germany')"&gt;</code>
+				<code>	&lt;xsl:value-of select="name" /&gt;</code>
+				<code>&lt;/xsl:template&gt;</code>
+			</pre>
+		</section>
+	</div></div>
+
+	<div class="slide" id="WhatMatch"><div>
+		<section>
+			<header>
+				<h2>What is happening?</h2>
+			</header>
+			<ul>
+				<li><code>key()</code> returns a nodeset</li>
+				<li>XSLT has to compare the current node to the nodeset</li>
+				<li>much slower than a simple node comparison</li>
+			</ul>
+		</section>
+	</div></div>
+
+	<div class="slide" id="ResultsMatch"><div>
+		<section>
+			<header>
+				<h2>Results</h2>
+			</header>
+			<h3>Advantages</h3>
+			<ul>
+				<li>None I can think of</li>
+			</ul>
+			<h3>Disadvantages</h3>
+			<ul>
+				<li>Potentially poor performance</li>
 			</ul>
 		</section>
 	</div></div>
