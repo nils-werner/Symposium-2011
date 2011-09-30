@@ -28,6 +28,10 @@
 			background-color: transparent;
 		}
 		
+		mark.slight {
+			background-color: #EDF9EA !important;
+		}
+		
 		h3 {
 			font-size: 1.3em;
 			font-weight: bold;
@@ -42,6 +46,10 @@
 			opacity: 0.2;
 			color: #fff;
 			font-size: 0.6em;
+		}
+		
+		pre {
+			margin-left: -30px !important;
 		}
 		
 		.credit a {
@@ -76,17 +84,16 @@
 			</header>
 			<pre>
 				<code>&lt;data&gt;</code>
-				<code>	&lt;item region="Italy"&gt;</code>
-				<code>			&lt;name&gt;Guiseppe&lt;/name&gt;</code>
-				<code>	&lt;item&gt;</code>
-				<code>	&lt;item region="Germany"&gt;</code>
-				<code>			&lt;name&gt;Hans&lt;/name&gt;</code>
-				<code>	&lt;item&gt;</code>
+				<code>	&lt;item country="Italy"&gt;&lt;name&gt;Guiseppe&lt;/name&gt;&lt;/item&gt;</code>
+				<code>	&lt;item country="Italy"&gt;&lt;name&gt;Marco&lt;/name&gt;&lt;/item&gt;</code>
+				<code>	&lt;item country="Germany"&gt;&lt;name&gt;Hans&lt;/name&gt;&lt;/item&gt;</code>
+				<code>	&lt;item country="Germany"&gt;&lt;name&gt;Fritz&lt;/name&gt;&lt;/item&gt;</code>
+				<code>	&lt;item country="Italy"&gt;&lt;name&gt;Silvio&lt;/name&gt;&lt;/item&gt;</code>
 				<code> <mark class="comment">...</mark></code>
 				<code>&lt;data&gt;</code>
 			</pre>
 			<p class="annotate">
-				We want to group that.
+				We want to group that by <code>@country</code>
 			</p>
 		</section>
 	</div></div>
@@ -99,10 +106,11 @@
 			<pre>
 				<code> </code>
 				<code>&lt;xsl:template match="data"&gt;</code>
-				<code>	&lt;xsl:for-each select="item[not(@country = preceding-sibling::item/@country)]"&gt;</code>
+				<code>	&lt;xsl:for-each
+			select="<mark class="slight">item[not(@country = preceding-sibling::item/@country)]</mark>"&gt;</code>
 				<code>		&lt;xsl:sort select="@country" /&gt;</code>
 				<code>		&lt;h3&gt;&lt;xsl:value-of select="@country" /&gt;&lt;/h3&gt;</code>
-				<code>		&lt;xsl:for-each select="/data/item[@country = current()/@country]"&gt;</code>
+				<code>		&lt;xsl:for-each select="<mark class="slight">/data/item[@country = current()/@country]</mark>"&gt;</code>
 				<code>			&lt;xsl:sort select="name" /&gt;</code>
 				<code>			&lt;xsl:value-of select="name" /&gt;</code>
 				<code>		&lt;/xsl:for-each&gt;</code>
@@ -118,9 +126,10 @@
 				<h2>Using Keys</h2>
 			</header>
 			<pre>
-				<code><mark>&lt;xsl:key name="items-by-country" match="item" use="@country" /&gt;</mark></code>
+				<code><mark>&lt;xsl:key name="items-by-country" match="data/item" use="@country" /&gt;</mark></code>
 				<code>&lt;xsl:template match="data"&gt;</code>
-				<code>	&lt;xsl:for-each select="item[not(@country = preceding-sibling::item/@country)]"&gt;</code>
+				<code>	&lt;xsl:for-each
+			select="<mark class="slight">item[not(@country = preceding-sibling::item/@country)]</mark>"&gt;</code>
 				<code>		&lt;xsl:sort select="@country" /&gt;</code>
 				<code>		&lt;h3&gt;&lt;xsl:value-of select="@country" /&gt;&lt;/h3&gt;</code>
 				<code>		&lt;xsl:for-each select="<mark>key('items-by-country',@country)</mark>"&gt;</code>
@@ -139,13 +148,13 @@
 				<h2>What?!?</h2>
 			</header>
 			<pre>
-				<code>&lt;xsl:key name="items-by-country" match="item" use="@country" /&gt;</code>
+				<code>&lt;xsl:key name="items-by-country" match="data/item" use="@country" /&gt;</code>
 				<code>&lt;xsl:template match="data"&gt;</code>
-				<code>	&lt;xsl:for-each select="<mark>item[count(. | </mark>
-								<mark>key('items-by-country',@country)[1]) = 1]</mark>"&gt;</code>
+				<code>	&lt;xsl:for-each 
+			select="<mark>item[count(. | key('items-by-country',@country)[1]) = 1]</mark>"&gt;</code>
 				<code>		&lt;xsl:sort select="@country" /&gt;</code>
 				<code>		&lt;h3&gt;&lt;xsl:value-of select="@country" /&gt;&lt;/h3&gt;</code>
-				<code>		&lt;xsl:for-each select="key('items-by-country',@country)"&gt;</code>
+				<code>		&lt;xsl:for-each select="<mark class="slight">key('items-by-country',@country)</mark>"&gt;</code>
 				<code>			&lt;xsl:sort select="name" /&gt;</code>
 				<code>			&lt;xsl:value-of select="name" /&gt;</code>
 				<code>		&lt;/xsl:for-each&gt;</code>
@@ -159,7 +168,7 @@
 		To hide progress bar from entire presentation
 		just remove “progress” element.
 		-->
-	<div class="progress"><div></div></div>
+	<!-- <div class="progress"><div></div></div> -->
 	<script src="scripts/script.js"></script>
 	<!-- Copyright © 2010–2011 Vadim Makeev, http://pepelsbey.net/ -->
 </body>
