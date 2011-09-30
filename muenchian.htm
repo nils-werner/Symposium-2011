@@ -142,6 +142,30 @@
 		</section>
 	</div></div>
 	
+	
+	<div class="slide" id="KeysLeaderBroken"><div>
+		<section>
+			<header>
+				<h2>Using Keys To Find Group Leaders</h2>
+			</header>
+			<pre>
+				<code>&lt;xsl:key name="items-by-country" match="data/item" use="@country" /&gt;</code>
+				<code>&lt;xsl:template match="data"&gt;</code>
+				<code>	&lt;xsl:for-each 
+select="<mark>contact[. = key('items-by-country', @country)[1]]</mark>"&gt;</code>
+				<code>		&lt;xsl:sort select="@country" /&gt;</code>
+				<code>		&lt;h3&gt;&lt;xsl:value-of select="@country" /&gt;&lt;/h3&gt;</code>
+				<code>		&lt;xsl:for-each select="<mark class="slight">key('items-by-country',@country)</mark>"&gt;</code>
+				<code>			&lt;xsl:sort select="name" /&gt;</code>
+				<code>			&lt;xsl:value-of select="name" /&gt;</code>
+				<code>		&lt;/xsl:for-each&gt;</code>
+				<code>	&lt;/xsl:for-each&gt;</code>
+				<code>&lt;/xsl:template&gt;</code>
+			</pre>
+		</section>
+	</div></div>
+	
+	
 	<div class="slide" id="KeysLeader"><div>
 		<section>
 			<header>
